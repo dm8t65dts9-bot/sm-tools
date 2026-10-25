@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="bn">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#edf2ff"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="My Web Tools"><link rel="manifest" href="manifest.json"><link rel="apple-touch-icon" href="icon-192.png">
+<title>My Web Tools</title><link rel="stylesheet" href="style.css">
+</head><body>
+<div class="wallpaper" id="wallpaper"></div>
+<header class="top glass">
+ <div class="brand"><div class="logo">⌘</div><div><h1>My Web Tools</h1><small>আপনার ব্যক্তিগত ওয়ার্কস্পেস</small></div></div>
+ <div class="actions"><button id="themeBtn" class="round" title="থিম">☾</button><button id="wallBtn" class="soft">🖼️ ছবি</button><button id="addBtn" class="primary">＋ যোগ</button><button id="backupBtn" class="soft">Backup</button><button id="restoreBtn" class="soft">Restore</button><input id="wallInput" type="file" accept="image/*" hidden><input id="restoreInput" type="file" accept="application/json,.json" hidden></div>
+</header>
+<main>
+ <section class="hero"><span class="eyebrow">YOUR SPACE, YOUR RULES</span><h2>সব দরকারি টুলস এক জায়গায়।</h2><p>iPhone ও ল্যাপটপে ব্যবহার করুন—ক্লাউড সিঙ্ক সেটআপ করলে একই ডেটা দুই জায়গায় থাকবে।</p>
+ <div class="search glass"><span>⌕</span><input id="search" placeholder="ওয়েবসাইট বা ক্যাটাগরি খুঁজুন…"><kbd>⌘ / Ctrl K</kbd></div><small id="syncStatus" class="status">এই ডিভাইসে সেভ হচ্ছে</small></section>
+ <nav id="nav" class="nav"></nav><section id="grid" class="grid"></section>
+ <section class="syncbox glass"><div><b>☁️ দুই ডিভাইসে একই ডেটা</b><p>ক্লাউড সিঙ্ক চালু করতে Firebase সেটিংস যোগ করুন। সেটআপ গাইড ZIP ফাইলে আছে।</p></div><button class="soft" id="syncSetup">সিঙ্ক সেটআপ</button></section>
+ <footer>My Web Tools · আপনার তথ্য এই ব্রাউজারে সেভ থাকে, ক্লাউড সিঙ্ক আলাদা করে সেটআপ করতে হবে।</footer>
+</main>
+<dialog id="dlg" class="dialog glass"><form id="form">
+ <div class="dlghead"><div><span class="eyebrow">CUSTOMIZE</span><h3 id="dlgTitle">নতুন আইটেম</h3></div><button type="button" id="close" class="round">✕</button></div>
+ <input id="itemId" type="hidden">
+ <label>নাম<input id="name" required maxlength="60" placeholder="যেমন: YouTube"></label>
+ <label>ওয়েবসাইট URL<input id="url" required type="url" placeholder="https://example.com"></label>
+ <label>ক্যাটাগরি<select id="category"></select></label>
+ <label>আইকন / Emoji<input id="emoji" maxlength="10" placeholder="যেমন: ▶️"></label>
+ <label>নিজের আইকন ছবি<input id="iconFile" type="file" accept="image/*"></label><div id="preview" class="preview">আইকন প্রিভিউ</div>
+ <div class="dlgactions"><button id="del" type="button" class="danger hidden">Delete</button><span class="spacer"></span><button id="cancel" type="button" class="soft">বাতিল</button><button type="submit" class="primary">সেভ</button></div>
+</form></dialog>
+<dialog id="syncDlg" class="dialog glass"><form id="syncForm"><div class="dlghead"><div><span class="eyebrow">CLOUD SYNC</span><h3>Firebase সেটআপ</h3></div><button type="button" id="syncClose" class="round">✕</button></div>
+<p class="muted">Firebase Console থেকে Web App config নিয়ে নিচের ঘরে পেস্ট করুন। একই Firebase project-এ দুই ডিভাইসের জন্য একই sync key ব্যবহার করবেন।</p>
+<label>Firebase Web App config JSON<textarea id="firebaseConfig" rows="6" placeholder='{"apiKey":"...","authDomain":"...","projectId":"...","appId":"..."}'></textarea></label>
+<label>Sync Key<input id="syncKey" placeholder="যেমন: selim-my-tools-01"></label>
+<p class="muted small">সতর্কতা: Firebase-এ Authentication ও Firestore Rules ঠিকভাবে সেট করুন। উন্মুক্ত public write rules ব্যবহার করবেন না।</p>
+<div class="dlgactions"><span class="spacer"></span><button type="button" id="syncCancel" class="soft">বাতিল</button><button type="submit" class="primary">সেটিংস সেভ</button></div></form></dialog>
+<div id="toast" class="toast"></div><script src="app.js"></script>
+</body></html>
